@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import UserInput from "./components/UserInput";
 import {useState} from "react";
+import Results from "./components/Results";
 
 function App() {
     const [userInput, setUserInput] = useState({
@@ -14,7 +15,7 @@ function App() {
         setUserInput((prevUserInput) => {
             return {
                 ...prevUserInput,
-                [inputIdentifier]: newValue,
+                [inputIdentifier]: +newValue, // conversion from string to number
             };
         });
     }
@@ -23,6 +24,7 @@ function App() {
       <>
         <Header />
         <UserInput onChange={handleChange} userInputValue={userInput}/>
+        <Results userInput={userInput} />
       </>
   );
 }
